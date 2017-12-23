@@ -262,7 +262,7 @@ header .nav-list-item a {
 
 .post-content h1,
 .post-block .post-title {
-  margin-top: -1em;
+  margin-top: 0em;
   font-size: 3em;
 }
 
