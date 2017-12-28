@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title>Docker虚拟化 • My Blog</title><meta name="description" content="Docker虚拟化 - XuJingRui"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="My Blog"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="My Blog">My Blog</a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">BLOG</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="https://github.com/xujingrui" target="_blank">GITHUB</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about" target="_self">ABOUT</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Docker虚拟化</h1><div class="post-info"><a></a>2017-12-28</div><div class="post-content"><h2 id="Docker介绍"><a href="#Docker介绍" class="headerlink" title="Docker介绍"></a>Docker介绍</h2><p>Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。<br>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。<br>容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。</p>
+<p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3141540493,1060669034&amp;fm=27&amp;gp=0.jpg" alt="aaa"></p>
+<h3 id="Docker的应用场景"><a href="#Docker的应用场景" class="headerlink" title="Docker的应用场景"></a>Docker的应用场景</h3><blockquote>
+<ul>
+<li>Web 应用的自动化打包和发布。</li>
+<li>自动化测试和持续集成、发布。</li>
+<li>在服务型环境中部署和调整数据库或其他的后台应用。</li>
+<li>从头编译或者扩展现有的OpenShift或Cloud Foundry平台来搭建自己的PaaS环境。</li>
+</ul>
+</blockquote>
+<h3 id="Docker-的优点"><a href="#Docker-的优点" class="headerlink" title="Docker 的优点"></a>Docker 的优点</h3><ul>
+<li>1、简化程序：<br>Docker 让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，便可以实现虚拟化。Docker改变了虚拟化的方式，使开发者可以直接将自己的成果放入Docker中进行管理。方便快捷已经是 Docker的最大优势，过去需要用数天乃至数周的    任务，在Docker容器的处理下，只需要数秒就能完成。</li>
+<li>2、避免选择恐惧症：<br>如果你有选择恐惧症，还是资深患者。Docker 帮你    打包你的纠结！比如 Docker 镜像；Docker 镜像中包含了运行环境和配置，所以 Docker 可以简化部署多种应用实例工作。比如 Web 应用、后台应用、数据库应用、大数据应用比如 Hadoop 集群、消息队列等等都可以打包成一个镜像部署。</li>
+<li>3、节省开支：<br>一方面，云计算时代到来，使开发者不必为了追求效果而配置高额的硬件，Docker 改变了高性能必然高价格的思维定势。Docker 与云的结合，让云空间得到更充分的利用。不仅解决了硬件管理的问题，也改变了虚拟化的方式。</li>
+</ul>
+<h2 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h2><h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><blockquote>
+<ul>
+<li>Docker安装需要Linux内核3.0以上版本。</li>
+<li>建议安装在Centos7版本以上的系统。</li>
+</ul>
+</blockquote>
+<p>下载Docker源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://download.docker.com/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<p>安装Docker:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install docker-engine</span><br></pre></td></tr></table></figure>
+<p>版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# docker -v</span><br><span class="line">Docker version 17.09.1-ce, build 19e2cf6</span><br></pre></td></tr></table></figure>
+</div></article></div></main><footer><div class="paginator"><a class="next" href="/2017/12/27/saltstack/">next</a></div><div class="copyright"><p>&copy; 2012 - 2017 <a href="/about">XuJingRui</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script>var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+_gaq.push(['_trackPageview']);
+
+(function () {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>
