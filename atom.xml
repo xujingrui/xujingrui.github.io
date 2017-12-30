@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-30T14:37:00.645Z</updated>
+  <updated>2017-12-30T14:41:46.471Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,15 +21,20 @@
     <link href="http://yoursite.com/2017/12/30/Jenkins/"/>
     <id>http://yoursite.com/2017/12/30/Jenkins/</id>
     <published>2017-12-30T13:59:46.000Z</published>
-    <updated>2017-12-30T14:37:00.645Z</updated>
+    <updated>2017-12-30T14:41:46.471Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Jenkins简介"><a href="#Jenkins简介" class="headerlink" title="Jenkins简介"></a>Jenkins简介</h2><p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1246883031,4171520902&amp;fm=27&amp;gp=0.jpg" alt="aa-1"></p><p>目前持续集成(CI)已成为当前许多软件开发团队在整个软件开发生命周期内侧重于保证代码质量的常见做法。它是一种实践，旨在缓和和稳固软件的构建过程。并且能够帮助您的开发团队应对如下挑战：</p><ul><li>软件构建自动化 ：配置完成后，CI系统会依照预先制定的时间表，或者针对某一特定事件，对目标软件进行构建。</li><li>构建可持续的自动化检查 ：CI系统能持续地获取新增或修改后签入的源代码，也就是说，当软件开发团队需要周期性的检查新增或修改后的代码时，CI系统会不断确认这些新代码是否破坏了原有软件的成功构建。这减少了开发者们在检查彼此相互依存的代码中变化情况需要花费的时间和精力(说直接一点也是钱啊，呵呵)。</li><li>构建可持续的自动化测试 ：构建检查的扩展部分，构建后执行预先制定的一套测试规则，完成后触发通知(Email,RSS等等)给相关的当事人。</li><li>生成后后续过程的自动化 :当自动化检查和测试成功完成，软件构建的周期中可能也需要一些额外的任务，诸如生成文档、打包软件、部署构件到一个运行环境或者软件仓库。这样，构件才能更迅速地提供给用户使用。<br>部署一个CI系统需要的最低要求是，一个可获取的源代码的仓库，一个包含构建脚本的项目。</li></ul><p>下图概括了CI系统的基本结构：</p><p><img src="https://raw.githubusercontent.com/xujingrui/xujingrui.github.io/master/home/images/jenkins-1.jpg" alt="aa-2"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Jenkins简介"><a href="#Jenkins简介" class="headerlink" title="Jenkins简介"></a>Jenkins简介</h2><p>　　　　　</p><p><img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1246883031,4171520902&amp;fm=27&amp;gp=0.jpg" alt="aa-1"></p><p>　　</p><p>目前持续集成(CI)已成为当前许多软件开发团队在整个软件开发生命周期内侧重于保证代码质量的常见做法。它是一种实践，旨在缓和和稳固软件的构建过程。并且能够帮助您的开发团队应对如下挑战：</p><ul><li>软件构建自动化 ：配置完成后，CI系统会依照预先制定的时间表，或者针对某一特定事件，对目标软件进行构建。</li><li>构建可持续的自动化检查 ：CI系统能持续地获取新增或修改后签入的源代码，也就是说，当软件开发团队需要周期性的检查新增或修改后的代码时，CI系统会不断确认这些新代码是否破坏了原有软件的成功构建。这减少了开发者们在检查彼此相互依存的代码中变化情况需要花费的时间和精力(说直接一点也是钱啊，呵呵)。</li><li>构建可持续的自动化测试 ：构建检查的扩展部分，构建后执行预先制定的一套测试规则，完成后触发通知(Email,RSS等等)给相关的当事人。</li><li>生成后后续过程的自动化 :当自动化检查和测试成功完成，软件构建的周期中可能也需要一些额外的任务，诸如生成文档、打包软件、部署构件到一个运行环境或者软件仓库。这样，构件才能更迅速地提供给用户使用。<br>部署一个CI系统需要的最低要求是，一个可获取的源代码的仓库，一个包含构建脚本的项目。</li></ul><p>下图概括了CI系统的基本结构：</p><p><img src="https://raw.githubusercontent.com/xujingrui/xujingrui.github.io/master/home/images/jenkins-1.jpg" alt="aa-2"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;Jenkins简介&quot;&gt;&lt;a href=&quot;#Jenkins简介&quot; class=&quot;headerlink&quot; title=&quot;Jenkins简介&quot;&gt;&lt;/a&gt;Jenkins简介&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;https://ss3.bdstatic.com/70cFv8S
+        &lt;h2 id=&quot;Jenkins简介&quot;&gt;&lt;a href=&quot;#Jenkins简介&quot; class=&quot;headerlink&quot; title=&quot;Jenkins简介&quot;&gt;&lt;/a&gt;Jenkins简介&lt;/h2&gt;&lt;p&gt;　
+　
+　
+　
+　&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ss3.bds
       
     
     </summary>
