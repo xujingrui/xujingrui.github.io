@@ -103,36 +103,35 @@
 　　</p>
 <p>Docker程序将读取Dockerfile，根据指令生成定制的image。相比image这种黑盒子，Dockerfile这种显而易见的脚本更容易被使用者接受，它明确的表明image是怎么产生的。有了Dockerfile，当我们需要定制自己额外的需求时，只需在Dockerfile上添加或者修改指令，重新生成image即可，省去了敲命令的麻烦。</p>
 <h3 id="Dockerfile语法"><a href="#Dockerfile语法" class="headerlink" title="Dockerfile语法"></a>Dockerfile语法</h3><ul>
-<li><p>1、FROM（第一条指令必须是FROM） 格式：FROM 或 FROM </p>
-</li>
-<li><p>2、MAINTAINER 格式：MAINTAINER #指定维护者信息</p>
-</li>
-<li><p>3、RUN 格式：RUN 或 RUN [“executable”,”param1”,”param2”] #前者将在shell终端运行，后者则使用exec 执行；</p>
-</li>
-<li><p>4、CMD 格式：（三种格式） CMD [“executable”,”param1”,”param2”] #使用exec 执行，推荐使用； CMD command param1 param2 #在/bin/bash中执行，提供给需要交互的应用； CMD [“param1”,”param2”] #提供给ENTRYPOINT 默认参数 每个Dockerfile 文件只能有一个CMD 命令，如果指定多了多条命令，只有最后一条被执行；如果用户启动容器的时候指定了运行命令，则会覆盖掉CMD指定的命令；</p>
-</li>
-<li><p>5、EXPOSE 格式：EXPOSE [ …] #告诉Docker 服务端容器暴露的端口号，供互联系统使用； 例：EXPOSE 22 80 8443</p>
-</li>
-<li><p>6、ENV 格式：ENV #指定一个环境变量，会被后续RUN指令使用，并在容器运行时保持。</p>
-</li>
-<li><p>7、ADD 格式：ADD #复制指定的src 到容器的dest ，其中src 可以是Dockerfile 所在目录的一个相对路径（文件或目录）；也可以是个URL 还可以是一个tar 文件（自动解压为目录）。</p>
-</li>
-<li><p>8、COPY 格式：COPY #复制本地主机的src 到容器中的dest 。目标路径不存在时，会自动创建。当时用本地目标为源目录时，推荐使用COPY。</p>
-</li>
-<li><p>9、ENTRYPOINT 格式：（两种格式） ENTRYPOINT [“executable”,”param1”,”param2”] ENTRYPOINT command param1 param2 #配置容器启动后执行的命令，并且不可被docker run 提供的参数覆盖。每个Dockerfile 中只能有一个ENTRYPOINT ，当指定多个后，只有最后一个生效</p>
-</li>
-<li><p>10、VOLUME 格式：VOLUME [“/data”] #创建一个可以从本地主机或其他容器挂载的挂载点，一般用来存放数据库和需要保持的数据等。</p>
-</li>
-<li><p>11、USER 格式：USER daemon #指定运行容器时的用户名或UID ，后续的RUN 也会使用指定用户。</p>
-</li>
+<li>1、FROM（第一条指令必须是FROM） 格式：FROM 或 FROM </li>
+<li>2、MAINTAINER 格式：MAINTAINER #指定维护者信息</li>
+<li>3、RUN 格式：RUN 或 RUN [“executable”,”param1”,”param2”] #前者将在shell终端运行，后者则使用exec 执行；</li>
+<li>4、CMD 格式：（三种格式） CMD [“executable”,”param1”,”param2”] #使用exec 执行，推荐使用； CMD command param1 param2 #在/bin/bash中执行，提供给需要交互的应用； CMD [“param1”,”param2”] #提供给ENTRYPOINT 默认参数 每个Dockerfile 文件只能有一个CMD 命令，如果指定多了多条命令，只有最后一条被执行；如果用户启动容器的时候指定了运行命令，则会覆盖掉CMD指定的命令；</li>
+<li>5、EXPOSE 格式：EXPOSE [ …] #告诉Docker 服务端容器暴露的端口号，供互联系统使用； 例：EXPOSE 22 80 8443</li>
+<li>6、ENV 格式：ENV #指定一个环境变量，会被后续RUN指令使用，并在容器运行时保持。</li>
+<li>7、ADD 格式：ADD #复制指定的src 到容器的dest ，其中src 可以是Dockerfile 所在目录的一个相对路径（文件或目录）；也可以是个URL 还可以是一个tar 文件（自动解压为目录）。</li>
+<li>8、COPY 格式：COPY #复制本地主机的src 到容器中的dest 。目标路径不存在时，会自动创建。当时用本地目标为源目录时，推荐使用COPY。</li>
+<li>9、ENTRYPOINT 格式：（两种格式） ENTRYPOINT [“executable”,”param1”,”param2”] ENTRYPOINT command param1 param2 #配置容器启动后执行的命令，并且不可被docker run 提供的参数覆盖。每个Dockerfile 中只能有一个ENTRYPOINT ，当指定多个后，只有最后一个生效</li>
+<li>10、VOLUME 格式：VOLUME [“/data”] #创建一个可以从本地主机或其他容器挂载的挂载点，一般用来存放数据库和需要保持的数据等。</li>
+<li>11、USER 格式：USER daemon #指定运行容器时的用户名或UID ，后续的RUN 也会使用指定用户。</li>
 <li><p>12、WORKDIR 格式：WORKDIR /path/to/workdir #为后续的RUN、CMD、ENTRYPOINT指令配置工作目录。可以使用多个WORKDIR 指令，后续命令如果参数是相对路径，则会基于之前命令指定的路径。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例： WORKDIR /a WORKDIR b WORKDIR c RUN pwd 则最终为：/a/b/c</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>13、ONBUILD 格式：ONBUILD [INSTRUCTION] #配置当所创建的镜像作为其他新创建镜像的基础镜像时，所执行的操作命令。<br>docker build #根据指定路径下的Dockerfile 创建镜像。</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例： WORKDIR /a WORKDIR b WORKDIR c RUN pwd 则最终为：/a/b/c</span><br></pre></td></tr></table></figure>
-<ul>
-<li>13、ONBUILD 格式：ONBUILD [INSTRUCTION] #配置当所创建的镜像作为其他新创建镜像的基础镜像时，所执行的操作命令。</li>
-</ul>
-<p>docker build #根据指定路径下的Dockerfile 创建镜像。</p>
+<h3 id="Dockerfile例子"><a href="#Dockerfile例子" class="headerlink" title="Dockerfile例子"></a>Dockerfile例子</h3><p>查目录：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/DockerFile</span><br><span class="line">└── base</span><br><span class="line">    ├── dockerfile</span><br><span class="line">    └── jenkins.war</span><br></pre></td></tr></table></figure>
+<p>查看dockerfile:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# cat /DockerFile/base/dockerfile </span><br><span class="line"># dockerfile build image</span><br><span class="line">FROM centos:latest</span><br><span class="line"></span><br><span class="line">MAINTAINER xujingrui_xjr@163.com</span><br><span class="line"></span><br><span class="line">RUN mkdir /data ; yum install  -y java</span><br><span class="line"></span><br><span class="line">COPY jenkins.war /data/</span><br><span class="line"></span><br><span class="line">EXPOSE 8080</span><br><span class="line"></span><br><span class="line">ENTRYPOINT java -jar /data/jenkins.war</span><br></pre></td></tr></table></figure>
+<p>构建自定义镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t jenkins:1.0 /DockerFile/base/</span><br></pre></td></tr></table></figure>
+<p>查看刚创建的镜像jenkins:1.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# docker images</span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">jenkins             1.0                 56f0361fe285        2 minutes ago       508MB</span><br></pre></td></tr></table></figure>
+<p>运行jenkins镜像：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost /]# docker run -d -p 12345:8080 jenkins:1.0 </span><br><span class="line">7a4e64a266feb756f7cbe6889df9bd818976e8280d7dc082afffbc9e1d3f7f6f</span><br><span class="line"></span><br><span class="line">[root@localhost /]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">7a4e64a266fe        jenkins:1.0         &quot;/bin/sh -c &apos;java ...&quot;   30 seconds ago      Up 29 seconds       0.0.0.0:12345-&gt;8080/tcp   cocky_lovelace</span><br></pre></td></tr></table></figure>
+<p>访问jenkins:</p>
+<p><img src="https://raw.githubusercontent.com/xujingrui/xujingrui.github.io/master/home/images/jenkins-8.jpg" alt="aa-2"></p>
 <hr>
 <p><strong>后续还有更多Docker高级玩法</strong></p>
 </div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/12/30/Jenkins/">prev</a><a class="next" href="/2017/12/27/saltstack/">next</a></div><div class="copyright"><p>&copy; 2012 - 2017 <a href="/about">XuJingRui</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script>var _gaq = _gaq || [];
