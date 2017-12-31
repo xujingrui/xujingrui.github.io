@@ -48,6 +48,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;&#123;&quot;registry-mirrors&quot;: [&quot;http://a91c78ed.m.daocloud.io&quot;]&#125;&apos; &gt; /etc/docker/daemon.json</span><br></pre></td></tr></table></figure>
 <p>开机启动服务：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start  docker</span><br><span class="line">systemctl enable  docker</span><br></pre></td></tr></table></figure>
+<p>运行一个容器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/xujingrui/xujingrui.github.io/master/home/images/docker-1.jpg" alt="aa-1"></p>
+<p>看到以上信息证明Docker安装成功</p>
 </div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/12/30/Jenkins/">prev</a><a class="next" href="/2017/12/27/saltstack/">next</a></div><div class="copyright"><p>&copy; 2012 - 2017 <a href="/about">XuJingRui</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script>var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
 _gaq.push(['_trackPageview']);
