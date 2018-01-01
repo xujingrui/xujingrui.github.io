@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2018-01-01T04:49:34.515Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/01/01/Yum-Install-Lnmp/</loc>
     
     <lastmod>2018-01-01T04:10:02.298Z</lastmod>
@@ -47,13 +54,6 @@
     <loc>http://yoursite.com/index.html</loc>
     
     <lastmod>2017-12-24T03:25:39.099Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2017-12-22T16:54:18.191Z</lastmod>
     
   </url>
   
