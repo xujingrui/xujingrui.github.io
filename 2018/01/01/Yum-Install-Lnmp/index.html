@@ -8,6 +8,7 @@
 <li>Package group support, including multiple-repository groups</li>
 <li>Simple interface</li>
 </ul>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1514789390715&amp;di=21a7530c90a82237a5d3c7ab7d116fe5&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.cswlyw.com%2Fuploads%2Fallimg%2F170721%2F170721%2F1-1FH1113543495.jpg" alt="aa"></p>
 <p><strong>基于 YUM 的这种特性，那么就可以简单粗暴的安装 LNMP 环境了。</strong></p>
 <table>
 <thead>
@@ -22,7 +23,7 @@
 <td>1.12.2</td>
 </tr>
 <tr>
-<td>Php-Fpm</td>
+<td>Php-Fpm　　　　　</td>
 <td>7.0.26</td>
 </tr>
 <tr>
@@ -54,6 +55,7 @@
 <p>安装：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mysql-community-server</span><br></pre></td></tr></table></figure>
 <hr>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1514789800692&amp;di=a0956270d6decc455116baf0646990a7&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimages2015.cnblogs.com%2Fblog%2F587079%2F201512%2F587079-20151230233727729-410040065.png" alt="aa-2"></p>
 <h3 id="Centos6-X-Lnmp"><a href="#Centos6-X-Lnmp" class="headerlink" title="Centos6.X Lnmp"></a>Centos6.X Lnmp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br><span class="line">rpm -Uvh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm</span><br><span class="line">rpm -Uvh http://remi.mirrors.arminco.com/enterprise/remi-release-6.rpm</span><br><span class="line">sed -i &quot;/remi\/mirror/&#123;n;s/enabled=0/enabled=1/g&#125;&quot; /etc/yum.repos.d/remi.repo</span><br><span class="line">sed -i &quot;/test\/mirror/&#123;n;n;s/enabled=0/enabled=1/g&#125;&quot; /etc/yum.repos.d/remi.repo</span><br><span class="line">sed -i &quot;/php70\/mirror/&#123;n;s/enabled=0/enabled=1/g&#125;&quot; /etc/yum.repos.d/remi-php70.repo</span><br><span class="line">rpm -Uvh http://repo.mysql.com/yum/mysql-5.7-community/el/6/x86_64/mysql57-community-release-el6-7.noarch.rpm</span><br><span class="line">yum install -y mysql-community-server nginx php php-bcmath php-fpm php-gd php-json php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-pdo_dblib php-pgsql php-recode php-snmp php-soap php-xml php-pecl-zip</span><br></pre></td></tr></table></figure>
 <h3 id="Centos7-X-Lnmp"><a href="#Centos7-X-Lnmp" class="headerlink" title="Centos7.X Lnmp"></a>Centos7.X Lnmp</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br><span class="line">rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm</span><br><span class="line">rpm -Uvh http://remi.mirrors.arminco.com/enterprise/remi-release-7.rpm</span><br><span class="line">sed -i &quot;/remi\/mirror/&#123;n;s/enabled=0/enabled=1/g&#125;&quot; /etc/yum.repos.d/remi.repo</span><br><span class="line">sed -i &quot;/test\/mirror/&#123;n;n;s/enabled=0/enabled=1/g&#125;&quot; /etc/yum.repos.d/remi.repo</span><br><span class="line">sed -i &quot;/php70\/mirror/&#123;n;s/enabled=0/enabled=1/g&#125;&quot; /etc/yum.repos.d/remi-php70.repo</span><br><span class="line">rpm -Uvh http://repo.mysql.com/yum/mysql-5.7-community/el/7/x86_64/mysql57-community-release-el7-7.noarch.rpm</span><br><span class="line">yum install -y mysql-community-server nginx php php-bcmath php-fpm php-gd php-json php-mbstring php-mcrypt php-mysqlnd php-opcache php-pdo php-pdo_dblib php-pgsql php-recode php-snmp php-soap php-xml php-pecl-zip</span><br></pre></td></tr></table></figure>
 </div></article></div></main><footer><div class="paginator"><a class="next" href="/2017/12/30/Jenkins/">next</a></div><div class="copyright"><p>&copy; 2012 - 2018 <a href="/about">XuJingRui</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script>var _gaq = _gaq || [];
