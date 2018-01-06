@@ -111,8 +111,33 @@
 <li style="list-style: none"><input type="checkbox" checked> 查看指定module用法</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt &quot;*&quot; sys.doc cmd.run</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 列出所有的grains项目名字</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt &apos;*&apos; grains.ls</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 列出所有grains项目以及值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt &apos;*&apos; grains.items</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 拷贝master上的文件到客户端</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt &apos;*&apos; cp.get_file salt://test/1.txt  /tmp/123.txt</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 拷贝master上的目录到客户端</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt &apos;*&apos; cp.get_dir salt://test/conf /tmp/ //会自动在客户端创建conf目录，所以后面不要加conf，如果写成 /tmp/conf/  则会在/tmp/conf/目录下又创建conf</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 显示存活的minion</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt-run manage.up</span><br></pre></td></tr></table></figure>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 执行master上的shell脚本</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">salt &apos;*&apos; cmd.script salt://test/1.sh</span><br></pre></td></tr></table></figure>
 <hr>
 <p><strong>后续会更新一些常规配置</strong></p>
+<hr>
 </div></article></div></main><footer><div class="paginator"><a class="prev" href="/2017/12/28/docker/">prev</a><a class="next" href="/2017/12/24/LNMP-OneKey/">next</a></div><div class="copyright"><p>&copy; 2012 - 2018 <a href="/about">XuJingRui</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script>var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
 _gaq.push(['_trackPageview']);

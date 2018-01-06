@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2017/12/27/saltstack/</loc>
+    
+    <lastmod>2018-01-06T11:13:29.840Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/12/30/Jenkins/</loc>
     
-    <lastmod>2018-01-06T10:53:11.706Z</lastmod>
+    <lastmod>2018-01-06T11:00:37.411Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://yoursite.com/2017/12/28/docker/</loc>
     
     <lastmod>2018-01-01T03:59:20.633Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/12/27/saltstack/</loc>
-    
-    <lastmod>2017-12-31T12:52:12.737Z</lastmod>
     
   </url>
   
