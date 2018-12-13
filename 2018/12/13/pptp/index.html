@@ -1,0 +1,43 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title>pptp • My Blog</title><meta name="description" content="pptp - XuJingRui"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="https://unpkg.com/nanoreset/nanoreset.min.css"><link rel="stylesheet" href="/css/theme.css"><link rel="search" type="application/opensearchdescription+xml" href="/atom.xml" title="My Blog"></head><body><div class="wrap" id="barba-wrapper"><header><h1 class="branding"><a href="/" title="My Blog">My Blog</a></h1><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link no-barba" href="/" target="_self">BLOG</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/archives" target="_self">HOME</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="https://github.com/xujingrui" target="_blank">GITHUB</a></li><li class="nav-list-item"><a class="nav-list-link no-barba" href="/about" target="_self">ABOUT</a></li></ul></header><div class="barba-container"><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">pptp</h1><div class="post-info"><a></a>2018-12-13</div><div class="post-content"><h1 id="PPTP"><a href="#PPTP" class="headerlink" title="PPTP"></a>PPTP</h1><p>一直以来觉得pptpd不大好用，特别是在国内，运营商对它有诸多限制，但openvpn对初学者来说还是有点难度。今天恰好有个朋友问到如何能够简单便捷的搭建pptpd vpn，我跟他讲了下思路，发现他还是不能理解，如是有了接下来的操作。</p>
+<p><strong>检测是否符合pptp的搭建环境的要求</strong></p>
+<p><code>modprobe ppp-compress-18 &amp;&amp; echo ok</code></p>
+<h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p><strong>安装epel源</strong></p>
+<p><code>yum install -y epel-release</code></p>
+<p><strong>安装PPTPD服务</strong></p>
+<p><code>yum install -y pptpd</code></p>
+<h2 id="2-配置"><a href="#2-配置" class="headerlink" title="2.配置"></a>2.配置</h2><p><strong>编辑/etc/pptpd.conf</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">localip 1.2.3.4   （本机IP）</span><br><span class="line">remoteip 4.3.2.1-5  （VPN客户端分配的IP）</span><br></pre></td></tr></table></figure>
+<p><strong>DNS配置 /etc/ppp/options.pptpd</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ms-dns 8.8.8.8</span><br><span class="line">ms-dns 8.8.4.4</span><br></pre></td></tr></table></figure>
+<p><strong>设置用户名、密码等信息 /etc/ppp/chap-secrets</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Secrets for authentication using CHAP</span><br><span class="line"># client        server  secret                  IP addresses</span><br><span class="line">zhang3  pptpd  zhang3  *</span><br></pre></td></tr></table></figure>
+<p>用户名（tab） 主机名（tab） 密码（tab） 分配到的ip地址</p>
+<p><strong>修改sysctl.conf文件</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_forward=1</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p><strong>防火墙添加策略</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -A INPUT -p tcp -m tcp --dport 1723 -j ACCEPT</span><br><span class="line">iptables -t nat -A POSTROUTING -s 4.3.2.1/24 -o eth0 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p><strong>启动PPTPD服务</strong></p>
+<p><code>/etc/init.d/pptpd restart
+systemctl restart pptpd</code></p>
+<p><strong>查看现在用户</strong></p>
+<p><code>last | grep still | grep ppp</code></p>
+<p><strong>查看log</strong></p>
+<p><code>tail -f /var/log/message | grep ppp</code></p>
+<h2 id="VPN客户端"><a href="#VPN客户端" class="headerlink" title="VPN客户端"></a>VPN客户端</h2><p>安装客户端</p>
+<p><code>yum install ppp pptp pptp-setup</code></p>
+<p>创建VPN连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pptpsetup --create myvpn --server pptp服务器IP --username 用户名  --password 密码 --encrypt --start</span><br><span class="line">pppd call myvpn(启动)</span><br><span class="line">killall pppd（关闭）</span><br></pre></td></tr></table></figure>
+<p>验证连接<br><code>ip a |grep ppp</code></p>
+<p>添加路由到VPN server IP<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">route add -net 4.3.2.0 netmask 255.255.255.0 dev ppp0</span><br><span class="line">route -n</span><br></pre></td></tr></table></figure></p>
+<p>删除VPN连接<br><code>pptpsetup --delete myvpn</code></p>
+</div></article></div></main><footer><div class="paginator"><a class="next" href="/2018/01/13/Gitlab-Jenkins-Saltstack/">next</a></div><div class="copyright"><p>&copy; 2012 - 2018 <a href="/about">XuJingRui</a><br>Powered by <a href="https://hexo.io/" rel="noreferrer" target="_blank">Hexo</a></p></div></footer></div></div><script>var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+_gaq.push(['_trackPageview']);
+
+(function () {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();</script><script src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+    Barba.Pjax.start()
+})</script></body></html>
